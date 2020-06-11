@@ -1,11 +1,14 @@
 import * as React from 'react';
-import {Button} from "antd";
+import TodosList from "../../components/TodosList";
+import AddTodo from "../../components/AddTodo";
 
 const Todos: React.FC = () => {
+    const todos = [['Practice Piano', 'Home', 'Low'], ['Call Jonathan', 'Work', 'High'], ['Call Jonathan', 'Work', 'High']];
     return (
-        <div>
-            <Button>Hello World</Button>
-        </div>
+        <React.Fragment>
+            <TodosList todos={todos}/>
+            <AddTodo/>
+        </React.Fragment>
     )
 }
 
