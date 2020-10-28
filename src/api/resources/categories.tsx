@@ -18,7 +18,13 @@ export type CategoryEditableProps = Partial<CategoryCreationProps>;
 export async function fetchCategories(ids?: CategoryId[]): Promise<Category[]> {
     await sleep(200);
 
-    return [];
+    const DEFAULT_CATEGORIES: Category[] = [
+        { content: 'Food', id: '1' },
+        { content: 'Health', id: '2' },
+        { content: 'Errands', id: '3' },
+        { content: 'Work', id: '4' },
+    ];
+    return [...DEFAULT_CATEGORIES];
 }
 
 export async function addCategory(category: CategoryCreationProps): Promise<CategoryId> {
