@@ -17,15 +17,15 @@ export const slice = createSlice({
       const id = action.payload;
       const todo = state.entities[id];
 
-      if(todo) {
+      if (todo) {
         todosAdapter.updateOne(
-          state, 
+          state,
           {
             id,
-            changes: {completed: !todo.completed}
-          })
+            changes: { completed: !todo.completed }
+          });
       }
-      
+
     },
     setTodos: todosAdapter.setAll,
   },

@@ -7,7 +7,7 @@ export const fetchCategories = (): AppThunk => async (dispatch: AppDispatch) => 
     try {
         const categories = await TodosApi.fetchCategories();
 
-        dispatch(categoriesActions.setCategories(categories))
+        dispatch(categoriesActions.setCategories(categories));
     } catch (error) {
         throw error;
     }
@@ -19,7 +19,7 @@ export const addCategory = (category: TodosApi.CategoryCreationProps): AppThunk 
         const finalCategory: TodosApi.Category = {
             id,
             ...category,
-        }
+        };
         dispatch(categoriesActions.addCategory(finalCategory));
     } catch (error) {
         throw error;
