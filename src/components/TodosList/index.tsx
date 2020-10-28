@@ -1,29 +1,94 @@
 import * as React from 'react';
-import {Divider, List, Typography} from "antd";
+import { Divider, List, Typography, Result, Skeleton } from "antd";
+
+import { Category, Todo, TodoId, TodoWithChildEntities } from "../../api";
+import TodoItem from "../TodoItem";
 import style from './TodosList.module.css';
-import Todo from "../../components/Todo";
+
 
 interface TodosListProps {
-    todos: any[];
+    todos: Todo[];
+    categories: Category[];
+    isLoading: boolean;
+    hasError: boolean;
+    onToggleTodo: (id: TodoId) => Promise<void>;
+    isToggleTodoLoading: boolean;
+    onRemoveTodo: (id: TodoId) => Promise<void>;
+    isRemoveTodoLoading: boolean;
 }
 
-const TodosList: React.FC<TodosListProps> = ({todos}) => {
+const TodosList: React.FC<TodosListProps> = ({
+    todos, categories, isLoading, hasError, onToggleTodo, isToggleTodoLoading, onRemoveTodo, isRemoveTodoLoading
+}) => {
+
+    const todosWithCategories: TodoWithChildEntities[] = todos.map((todo) => {
+        const todoWithCategories: TodoWithChildEntities = {
+            ...todo,
+            categories: categories.filter(category => todo.categoriesIds?.includes(category.id))
+        };
+        return todoWithCategories;
+    });
+
     return (
         <div className={style.container}>
-            <Typography.Title className={style.todosTitle}>Todos</Typography.Title>
-            <List
-                className={style.todosList}
-                dataSource={todos}
-                renderItem={item => <div className={style.todoContainer}><Todo content={item[0]} category={item[1]} priority={item[2]}/></div>}
-            />
-            <Divider className={style.divider}/>
-            <List
-                className={style.todosList}
-                dataSource={todos.slice(0,1)}
-                renderItem={item => <div className={style.todoContainer}><Todo completed content={item[0]} category={item[1]} priority={item[2]}/></div>}
-            />
+            <Typography.Title className={style.todosTitle}>{"Todos"}</Typography.Title>
+            {
+                !hasError ?
+                    !isLoading ?
+                        todos.length > 0 ?
+                            <>
+                                <List
+                                    className={style.todosList}
+                                    locale={{ emptyText: 'All Todos Done.' }}
+                                    dataSource={todosWithCategories.filter(todo => !todo.completed)}
+                                    renderItem={(todo): JSX.Element => <div className={style.todoContainer}>
+                                        <TodoItem
+                                            onToggleTodo={onToggleTodo}
+                                            onRemoveTodo={onRemoveTodo}
+                                            isToggleTodoLoading={isToggleTodoLoading}
+                                            isRemoveTodoLoading={isRemoveTodoLoading}
+                                            {...todo}
+                                        />
+                                    </div>}
+                                />
+                                {todos.filter(todo => todo.completed).length > 0 &&
+                                    <>
+                                        <Divider className={style.divider} />
+                                        <List
+                                            className={style.todosList}
+                                            dataSource={todosWithCategories.filter(todo => !!todo.completed)}
+                                            renderItem={(todo): JSX.Element => <div className={style.todoContainer}>
+                                                <TodoItem
+                                                    onToggleTodo={onToggleTodo}
+                                                    onRemoveTodo={onRemoveTodo}
+                                                    isToggleTodoLoading={isToggleTodoLoading}
+                                                    isRemoveTodoLoading={isRemoveTodoLoading}
+                                                    {...todo}
+                                                />
+                                            </div>}
+                                        />
+                                    </>
+                                }
+                            </>
+                            :
+                            <Result
+                                status="404"
+                                subTitle="Todos you add will appear here"
+                            />
+                        :
+                        <>
+                            <Skeleton />
+                            <Skeleton />
+                            <Skeleton />
+                        </>
+                    :
+                    <Result
+                        status="500"
+                        subTitle="Sorry, something went wrong."
+                    />
+            }
         </div>
-    )
-}
+    );
+};
 
 export default TodosList;

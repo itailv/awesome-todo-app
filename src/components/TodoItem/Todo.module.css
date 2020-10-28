@@ -16,7 +16,7 @@
     width: 100%;
 }
 
-.categoryRow{
+.categoriesRow{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -58,4 +58,5 @@
     font-size: 12px;
     color: rgba(0,0,0,0.45) !important;
     font-weight:500;
+    margin-right: 5px;
 }
