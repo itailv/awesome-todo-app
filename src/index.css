@@ -1,0 +1,16 @@
+@import '~antd/dist/antd.css';
+
+body {
+    font-family: "PingFang SC",-apple-system,BlinkMacSystemFont,segoe ui,Roboto,helvetica neue,Arial,noto sans,
+    sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol,noto color emoji,sans-serif;
+    padding-left: 36px;
+    padding-right: 36px;
+    background-color: #F6F9FB;
+}
+
+.ant-input {
+    border-radius: 4px !important;
+}
+.ant-select-selector {
+    border-radius: 4px !important;
+}

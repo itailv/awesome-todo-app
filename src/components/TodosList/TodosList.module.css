@@ -1,0 +1,32 @@
+.container{
+    max-width: 500px;
+    justify-content: center;
+    margin: auto;
+}
+
+.todosTitle{
+    font-size: 42px !important;
+    font-weight: 400;
+    margin-top: 74px;
+}
+
+.todosList{
+    margin-top: 40px;
+}
+
+.todoContainer{
+    margin-top: 10px;
+}
+
+.divider{
+    margin-top: 30px !important;
+    margin-bottom: 20px !important;
+    border-top: 1px solid #E9E9E9 !important;
+}
+
+.filterRow{
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    margin-bottom: 20px !important;
+}

@@ -27,6 +27,7 @@ module.exports = {
         'react/prop-types': 'off', // i don't give a damn
         'arrow-parens': ['error', 'as-needed', {
             'requireForBlockBody': true
-        }]
+        }],
+        semi: [2, "always"]
     },
 };

@@ -8,17 +8,17 @@ const config: webpack.Configuration = {
     context: __dirname,
 
     entry: {
-        index: './src/index',
+        index: './src',
     },
 
     output: {
-        filename: '[name].js',
+        filename: 'bundle.js',
         path: path.resolve(__dirname, './dist'),
         publicPath: '/',
     },
 
     resolve: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
     },
 
     devtool: 'source-map',
