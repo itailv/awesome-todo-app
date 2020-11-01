@@ -1,0 +1,16 @@
+.inputGroupFirst{
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 4px;
+}
+.inputGroup{
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 12px;
+}
+
+.inputTitle{
+    margin-bottom: 8px !important;
+}
