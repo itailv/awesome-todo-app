@@ -41,9 +41,9 @@ const TodoItem: React.FC<TodoProps> = ({
 
             {categories &&
                 <div className={style.categoriesRow}>
-                    {categories.map(category =>
+                    {categories.map((category, i) =>
                         <Typography.Text key={category.id} disabled={completed} className={style.categoryText}>
-                            {category.content}
+                            {i + 1 == categories.length ? category.content : `${category.content},`}
                         </Typography.Text>
                     )}
                 </div>}
