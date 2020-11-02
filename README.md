@@ -11,7 +11,7 @@
 This app was made as an example for writing modern web apps with stable best-practices solutions.
 
 <a href="https://itailv.github.io/awesome-todo-app/">
-   <img width="800px" src=".github/preview.png"/>
+   <img width="800px" src=".github/Todos-Preview.png"/>
 </a>
 
 
