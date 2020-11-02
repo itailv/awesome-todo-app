@@ -2,6 +2,7 @@
   <h1>⚡️</h1>
   <h1>Awesome Todo App</h1>
   <p>A Best-Practice React, Redux & Typescript Todo App.</p>
+  <a href="https://itailv.github.io/awesome-todo-app/" target="_blank">Live version</a>
 </div>
 
 
