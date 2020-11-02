@@ -10,11 +10,9 @@
 
 This app was made as an example for writing modern web apps with stable best-practices solutions.
 
-<div>
-    <a href="https://itailv.github.io/awesome-todo-app/">
-        <img width="700px" src=".github/preview.png"/>
-    </a>
-</div>
+<a href="https://itailv.github.io/awesome-todo-app/">
+   <img width="800px" src=".github/preview.png"/>
+</a>
 
 
 ## Technologies used
