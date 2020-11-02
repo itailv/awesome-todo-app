@@ -2,7 +2,6 @@ import * as React from 'react';
 import { useState } from 'react';
 import { Button, Divider, Input, Select, Slider, Typography } from "antd";
 import { CloseOutlined, PlusOutlined } from "@ant-design/icons/lib";
-import { SliderValue } from "antd/es/slider";
 import QueueAnim from 'rc-queue-anim';
 
 import { Category, CategoryContent, CategoryCreationProps, CategoryId, TodoContent, TodoCreationProps, TodoPriorityEnum } from "../../api";
@@ -32,8 +31,8 @@ const AddTodo: React.FC<AddTodoProps> = ({ allCategories, isLoading, onAddCatego
     const PriorityToSliderValueMap = new Map<TodoPriorityEnum, number>([
         [TodoPriorityEnum.LOW, 1], [TodoPriorityEnum.MEDIUM, 2], [TodoPriorityEnum.HIGH, 3],
     ]);
-    const onPrioritySliderChange = (value: SliderValue): void => {
-        const SliderValueToPriorityMap = new Map<SliderValue, TodoPriorityEnum>([
+    const onPrioritySliderChange = (value: number): void => {
+        const SliderValueToPriorityMap = new Map<number, TodoPriorityEnum>([
             [1, TodoPriorityEnum.LOW], [2, TodoPriorityEnum.MEDIUM], [3, TodoPriorityEnum.HIGH],
         ]);
         setPriority(SliderValueToPriorityMap.get(value) || null);
@@ -81,7 +80,7 @@ const AddTodo: React.FC<AddTodoProps> = ({ allCategories, isLoading, onAddCatego
                                 <Button
                                     className={style.closeModalButton}
                                     icon={<CloseOutlined />}
-                                    shape="circle-outline"
+                                    shape="circle"
                                     onClick={toggleModalVisible}
                                 />
                             </div>
