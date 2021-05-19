@@ -1,11 +1,10 @@
 import * as React from 'react';
-
-import Todos from "../Todos";
+import style from './App.module.css';
 
 const App: React.FC = () => {
     return (
-        <div>
-            <Todos />
+        <div className={style.root}>
+            App
         </div>
     );
 };
